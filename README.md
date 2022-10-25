@@ -7,14 +7,9 @@
 ![npm](https://img.shields.io/npm/dw/cron-validate)
 [![dependencies Status](https://david-dm.org/airfooox/cron-validate/status.svg)](https://david-dm.org/airfooox/cron-validate)
 
-Cron-validate is a cron-expression validator written in TypeScript.
-The validation options are customizable and cron fields like seconds and years are supported.
-
-## Installation
-
-Pacakge is available on npm:
-
-`npm install -S cron-validate`
+Cron-validate is a cron-expression validator written in TypeScript. This is a fork with adaptions to validate Lobaro Device Crons
+The validation options are customizable and cron fields like seconds and years are supported. The fork aims to support all options from the original repo and 
+to amend whats needed for the Lobaro Crons 
 
 ## Usage
 

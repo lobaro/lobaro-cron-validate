@@ -49,6 +49,7 @@ const checkDaysOfMonth = (
   if (
     options.useNearestWeekday &&
     cronData.daysOfMonth.indexOf('W') !== -1 &&
+    !options.lobaroUseListOfNearestWeekdays &&
     cronData.daysOfMonth.match(/[,/-]/)
   ) {
     return err([

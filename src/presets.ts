@@ -13,6 +13,7 @@ export default (): void => {
     useLastDayOfMonth: false,
     useLastDayOfWeek: false,
     useNearestWeekday: false,
+    lobaroUseListOfNearestWeekdays: false,
     useNthWeekdayOfMonth: false,
     seconds: {
       minValue: 0,
@@ -56,6 +57,7 @@ export default (): void => {
     useLastDayOfMonth: true,
     useLastDayOfWeek: true,
     useNearestWeekday: true,
+    lobaroUseListOfNearestWeekdays: false,
     useNthWeekdayOfMonth: true,
     seconds: {
       minValue: 0,
@@ -127,6 +129,64 @@ export default (): void => {
     years: {
       minValue: 1970,
       maxValue: 2099,
+    },
+  })
+
+  registerOptionPreset('lobaro-device-cron', {
+    // https://github.com/kelektiv/node-cron
+    presetId: 'lobaro-device-cron',
+    useSeconds: true,
+    useYears: false,
+    useAliases: false,
+    useBlankDay: true,
+    allowOnlyOneBlankDayField: false,
+    mustHaveBlankDayField: false,
+    useLastDayOfMonth: true,
+    useLastDayOfWeek: true,
+    useNearestWeekday: true,
+    lobaroUseListOfNearestWeekdays: true,
+    useNthWeekdayOfMonth: false,
+    seconds: {
+      minValue: 0,
+      maxValue: 59,
+      lowerLimit: 0, // optional, default to minValue
+      upperLimit: 59, // optional, default to maxValue
+    },
+    minutes: {
+      minValue: 0,
+      maxValue: 59,
+      lowerLimit: 0, // optional, default to minValue
+      upperLimit: 59, // optional, default to maxValue
+    },
+    hours: {
+      minValue: 0,
+      maxValue: 23,
+      lowerLimit: 0, // optional, default to minValue
+      upperLimit: 23, // optional, default to maxValue
+    },
+    daysOfMonth: {
+      minValue: 1,
+      maxValue: 31,
+      lowerLimit: 1, // optional, default to minValue
+      upperLimit: 31, // optional, default to maxValue
+    },
+    months: {
+      minValue: 0,
+      maxValue: 11,
+      lowerLimit: 0, // optional, default to minValue
+      upperLimit: 12, // optional, default to maxValue
+    },
+    daysOfWeek: {
+      minValue: 1,
+      maxValue: 7,
+      lowerLimit: 1, // optional, default to minValue
+      upperLimit: 7, // optional, default to maxValue
+    },
+    years: {
+      minValue: 1970,
+      maxValue: 2099,
+      lowerLimit: 1970, // optional, default to minValue
+      upperLimit: 2099, // optional, default to maxValue
     },
   })
 }

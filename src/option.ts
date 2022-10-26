@@ -17,6 +17,7 @@ const optionPresets: { [presetId: string]: OptionPreset } = {
     useLastDayOfMonth: false,
     useLastDayOfWeek: false,
     useNearestWeekday: false,
+    lobaroUseListOfNearestWeekdays: false,
     useNthWeekdayOfMonth: false,
     seconds: {
       minValue: 0,
@@ -61,6 +62,8 @@ const optionPresetSchema = yup
     useLastDayOfMonth: yup.boolean(),
     useLastDayOfWeek: yup.boolean(),
     useNearestWeekday: yup.boolean(),
+    lobaroUseListOfNearestWeekdays: yup.boolean(),
+    lobaroUseHashOperator: yup.boolean(),
     useNthWeekdayOfMonth: yup.boolean(),
     seconds: yup
       .object({
@@ -180,6 +183,7 @@ export const validateOptions = (
         useLastDayOfMonth: preset.useLastDayOfMonth ?? false,
         useLastDayOfWeek: preset.useLastDayOfWeek ?? false,
         useNearestWeekday: preset.useNearestWeekday ?? false,
+        lobaroUseListOfNearestWeekdays: preset.lobaroUseListOfNearestWeekdays ?? false,
         useNthWeekdayOfMonth: preset.useNthWeekdayOfMonth ?? false,
         seconds: {
           lowerLimit: preset.seconds.lowerLimit ?? preset.seconds.minValue,
@@ -230,6 +234,7 @@ export const validateOptions = (
         useLastDayOfMonth: yup.boolean(),
         useLastDayOfWeek: yup.boolean(),
         useNearestWeekday: yup.boolean(),
+        lobaroUseListOfNearestWeekdays: yup.boolean(),
         useNthWeekdayOfMonth: yup.boolean(),
         seconds: yup
           .object({

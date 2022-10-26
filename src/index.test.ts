@@ -621,6 +621,16 @@ describe('Test cron validation', () => {
     expect(cron('*/ * * * * ').isValid()).toBeFalsy()
   })
 
+  it('Test lobaro list of nearest weekdays', () => {
+    const fiveCharStringCron = cron('0 1 1W,4W * *', {
+      override: {
+        useNearestWeekday: true,
+        lobaroUseListOfNearestWeekdays: true },
+    })
+    expect(fiveCharStringCron.isValid()).toBeTruthy()
+  })
+
+
   it('Test massive cron-expression', () => {
     expect(
       cron(

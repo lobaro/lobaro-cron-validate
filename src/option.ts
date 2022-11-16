@@ -18,6 +18,7 @@ const optionPresets: { [presetId: string]: OptionPreset } = {
     useLastDayOfWeek: false,
     useNearestWeekday: false,
     lobaroUseListOfNearestWeekdays: false,
+    lobaroUseHashValue: false,
     useNthWeekdayOfMonth: false,
     seconds: {
       minValue: 0,
@@ -63,7 +64,7 @@ const optionPresetSchema = yup
     useLastDayOfWeek: yup.boolean(),
     useNearestWeekday: yup.boolean(),
     lobaroUseListOfNearestWeekdays: yup.boolean(),
-    lobaroUseHashOperator: yup.boolean(),
+    lobaroUseHashValue: yup.boolean(),
     useNthWeekdayOfMonth: yup.boolean(),
     seconds: yup
       .object({

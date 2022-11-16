@@ -36,7 +36,7 @@ type ExtendWildcards = {
   useLastDayOfWeek?: boolean
   useNearestWeekday?: boolean
   lobaroUseListOfNearestWeekdays?: boolean
-  lobaroUseHash?: boolean
+  lobaroUseHashValue?: boolean
   useNthWeekdayOfMonth?: boolean
 }
 

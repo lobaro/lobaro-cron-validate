@@ -176,6 +176,35 @@ describe('test', () => {
       unuseds: [
         {
           value: '1-15,20-25',
+          description: 'W as List and L with L',
+        },
+      ],
+    },
+    {
+      describe: 'useNearestWeekdayWithList',
+      options: {
+        override: {
+          useLastDayOfMonth: true,
+          useNearestWeekday: true,
+          lobaroUseListOfNearestWeekdays: true,
+          daysOfMonth: { lowerLimit: 1, upperLimit: 31 },
+        },
+      },
+      validIndexes: [2],
+      valids: [
+          { value: '15W', description: 'nearest weekday to the 15th' },
+          { value: '1,3W', description: 'first day of month and nearest weekday to the 3th' },
+          { value: '3W,10', description: 'nearest weekday to the 3th and exactly 10th' },
+          { value: '1W,4W', description: ' nearest weekday to the 1th and nearest weekday to the 4th' },
+          { value: 'LW', description: ' nearest weekday to the 1th and nearest weekday to the 4th' }
+      ],
+      invalids: [
+        { value: '15/W', description: 'cannot be in a step' },
+        { value: 'W/15', description: 'cannot be in a step' },
+      ],
+      unuseds: [
+        {
+          value: '8-9,21-22',
           description: 'no impact when option is on but no W specified',
         },
       ],

@@ -11,6 +11,11 @@ Cron-validate is a cron-expression validator written in TypeScript. This is a fo
 The validation options are customizable and cron fields like seconds and years are supported. The fork aims to support all options from the original repo and 
 to amend whats needed for the Lobaro Crons 
 
+## Lobaro Modifications
+- Support Lobaro CRON validations for `H,L,W`
+- Adding `/lib` to repo and skip release, requires `npm run build` to update compiled files in `/lib`
+
+
 ## Usage
 
 ### Basic usage

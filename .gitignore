@@ -7,5 +7,6 @@ node_modules/
 
 coverage/
 
-lib/
+# We chick in the lib folder as a release and do not use the release scripts
+#lib/
 

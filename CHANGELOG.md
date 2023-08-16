@@ -1,3 +1,16 @@
+# lobaro-cron-validate
+
+## unreleased
+### Changed
+- Allow 'LW' to be used in day of month lists as well
+
+## 1.0.0 (2022-11-17)
+### Added
+- Lobaro 'W' list option for day of month: Allow specifying multiple nearest weekdays
+- Lobaro Device preset
+
+# cron-validate
+
 ## [1.4.4](https://github.com/Airfooox/cron-validate/compare/v1.4.3...v1.4.4) (2022-10-12)
 
 

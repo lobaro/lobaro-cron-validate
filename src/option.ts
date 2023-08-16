@@ -185,6 +185,7 @@ export const validateOptions = (
         useLastDayOfWeek: preset.useLastDayOfWeek ?? false,
         useNearestWeekday: preset.useNearestWeekday ?? false,
         lobaroUseListOfNearestWeekdays: preset.lobaroUseListOfNearestWeekdays ?? false,
+        lobaroUseHashValue: preset.lobaroUseHashValue ?? false,
         useNthWeekdayOfMonth: preset.useNthWeekdayOfMonth ?? false,
         seconds: {
           lowerLimit: preset.seconds.lowerLimit ?? preset.seconds.minValue,
@@ -236,6 +237,7 @@ export const validateOptions = (
         useLastDayOfWeek: yup.boolean(),
         useNearestWeekday: yup.boolean(),
         lobaroUseListOfNearestWeekdays: yup.boolean(),
+        lobaroUseHashValue: yup.boolean(),
         useNthWeekdayOfMonth: yup.boolean(),
         seconds: yup
           .object({

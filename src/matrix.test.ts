@@ -323,6 +323,40 @@ describe('test', () => {
         },
       ],
     },
+    {
+      describe: 'lobaroUseHashValue all fields',
+      options: {
+        override: {
+          lobaroUseHashValue: true,
+        },
+      },
+      validIndexes: [0,1,2,3,4],
+      valids: [
+        { value: 'H', description: 'can be used alone' },
+        { value: '5,H', description: 'can be used in a list' },
+        { value: 'H(1-3)', description: 'can be used with a range' },
+        { value: '5,H(1-3)', description: 'can be used in a list with a range' },
+        { value: 'H/2', description: 'can be used as an iterator offset' },
+        { value: '3,H/2', description: 'can be used as an iterator offset in a list' },
+        { value: 'H(1-3)/2', description: 'can be used as an iterator offset with range' },
+        { value: '9,H(1-3)/2', description: 'can be used as an iterator offset with range in a list' },
+      ],
+      invalids: [
+        { value: 'H-3', description: 'cannot be used in a range' },
+        { value: 'H(1-2)-3', description: 'cannot be used in a range (with a range)' },
+        { value: 'H(1-2', description: 'cannot be used in an incomplete range' },
+        { value: '4/H', description: 'cannot be used as a step value' },
+        { value: '4/H(1-3)', description: 'cannot be used as a step value' },
+        { value: 'H(1-100)', description: 'cannot be used with an invalid range' },
+        { value: 'H/', description: 'cannot be used with an invalid iterator' },
+        { value: 'H(1-100)/', description: 'cannot be used with an invalid iterator (but valid range)' },
+      ],
+      unuseds: [
+        { value: '1', description: "doesn't affect numbers even if option is on" },
+        { value: '1-3', description: "doesn't affect ranges even if option is on" },
+        { value: '1-3,4,5/2', description: "doesn't affect lists/steps even if option is on" },
+      ],
+    },
   ]
 
   for (const matrix of matrixes) {

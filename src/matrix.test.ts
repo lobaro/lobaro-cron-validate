@@ -196,11 +196,13 @@ describe('test', () => {
           { value: '1,3W', description: 'first day of month and nearest weekday to the 3th' },
           { value: '3W,10', description: 'nearest weekday to the 3th and exactly 10th' },
           { value: '1W,4W', description: ' nearest weekday to the 1th and nearest weekday to the 4th' },
-          { value: 'LW', description: ' nearest weekday to the 1th and nearest weekday to the 4th' }
+          { value: 'LW', description: ' last weekday' },
+          { value: '3W,LW', description: ' nearest weekday to the 3rd and last weekday' },
       ],
       invalids: [
         { value: '15/W', description: 'cannot be in a step' },
         { value: 'W/15', description: 'cannot be in a step' },
+        { value: '12,LW/15', description: 'cannot be in a step' },
       ],
       unuseds: [
         {

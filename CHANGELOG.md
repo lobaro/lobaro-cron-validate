@@ -1,6 +1,8 @@
 # lobaro-cron-validate
 
 ## unreleased
+### Added
+- Lobaro 'H' option: Check for proper usage of [hashed values](https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/triggers/TimerTrigger/help-spec.jelly)
 ### Changed
 - Allow 'LW' to be used in day of month lists as well
 

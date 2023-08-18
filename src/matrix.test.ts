@@ -339,7 +339,7 @@ describe('test', () => {
         { value: 'H/2', description: 'can be used as an iterator offset' },
         { value: '3,H/2', description: 'can be used as an iterator offset in a list' },
         { value: 'H(1-3)/2', description: 'can be used as an iterator offset with range' },
-        { value: '9,H(1-3)/2', description: 'can be used as an iterator offset with range in a list' },
+        { value: '4,H(1-3)/2', description: 'can be used as an iterator offset with range in a list' },
       ],
       invalids: [
         { value: 'H-3', description: 'cannot be used in a range' },

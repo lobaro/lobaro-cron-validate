@@ -239,11 +239,91 @@ const checkFirstStepElement = (
   )
 }
 
+const checkHashedElement = (
+  element: string,
+  cronFieldType: CronFieldType,
+  options: Options
+):Result<boolean, string> => {
+  // List element has to start with 'H'
+  if (element[0] !== "H") {
+    return err("Hashed value doesn't begin field")
+  }
+
+  // Simplest case
+  if (element === "H") {
+    return valid(true)
+  }
+
+  // Split off iterator, if present
+  const stepArray = element.split('/')
+  if (stepArray.length > 2) {
+    return err(
+      `Hashed element '${element}' is not valid. (More than one '/')`
+    )
+  }
+  // Verify step if present
+  if (stepArray.length === 2) {
+    const secondStepElement = stepArray[1]
+
+    // Verify step is valid
+    if (!secondStepElement) {
+      return err(
+        `Second step element '${secondStepElement}' of '${element}' is not valid (doesnt exist).`
+      )
+    }
+
+    if (isNaN(Number(secondStepElement))) {
+      return err(
+        `Second step element '${secondStepElement}' of '${element}' is not valid (not a number).`
+      )
+    }
+
+    if (Number(secondStepElement) === 0) {
+      return err(
+        `Second step element '${secondStepElement}' of '${element}' cannot be zero.`
+      )
+    }
+
+    // If first element is 'H' only, return valid field
+    if (stepArray[0] === "H") {
+      return valid(true)
+    }
+  }
+
+  // Range present?
+  const rangeMatch = stepArray[0].match(/^H\((\d{1,2})-(\d{1,2})\)$/)
+  if (rangeMatch === null) {
+    return err(`Hashed element ${element} doesn't contain a valid iterator range.`)
+  }
+  const rangeStartResult = checkRangeElement(rangeMatch[1], cronFieldType, options, 0)
+
+  if (rangeStartResult.isError()) {
+    return rangeStartResult
+  }
+
+  const rangeEndResult = checkRangeElement(rangeMatch[2], cronFieldType, options, 1)
+
+  if (rangeEndResult.isError()) {
+    return rangeEndResult
+  }
+
+  if (Number(rangeMatch[1]) > Number(rangeMatch[2])) {
+    return err(
+      `Lower range end '${rangeMatch[1]}' is bigger than upper range end '${rangeMatch[2]}' of ${cronFieldType} field.`
+    )
+  }
+
+  return valid(true)
+}
+
 const checkListElement = (
   listElement: string,
   cronFieldType: CronFieldType,
   options: Options
 ): Result<boolean, string> => {
+  if (options.lobaroUseHashValue && listElement.match(/H/)) {
+    return checkHashedElement(listElement, cronFieldType, options)
+  }
   // Checks list element for steps like */2, 10-20/2
   const stepArray = listElement.split('/')
   if (stepArray.length > 2) {

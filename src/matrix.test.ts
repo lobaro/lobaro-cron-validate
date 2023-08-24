@@ -348,7 +348,11 @@ describe('test', () => {
         { value: '4/H', description: 'cannot be used as a step value' },
         { value: '4/H(1-3)', description: 'cannot be used as a step value' },
         { value: 'H(1-100)', description: 'cannot be used with an invalid range' },
+        { value: 'H(5-1)', description: 'cannot be used with an invalid range 2' },
         { value: 'H/', description: 'cannot be used with an invalid iterator' },
+        { value: 'H/3/', description: 'cannot be used with an invalid iterator 2' },
+        { value: 'H/three', description: 'cannot be used with an invalid iterator 3' },
+        { value: 'H/0', description: 'cannot be used with an invalid iterator 4' },
         { value: 'H(1-100)/', description: 'cannot be used with an invalid iterator (but valid range)' },
       ],
       unuseds: [

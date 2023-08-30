@@ -1,6 +1,8 @@
 # lobaro-cron-validate
 
 ## unreleased
+
+## 1.1.0 (2023-08-30)
 ### Added
 - Lobaro 'H' option: Check for proper usage of [hashed values](https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/triggers/TimerTrigger/help-spec.jelly)
 ### Changed

@@ -38,15 +38,13 @@ const checkDaysOfMonth = (
   // https://github.com/quartz-scheduler/quartz/blob/1e0ed76c5c141597eccd76e44583557729b5a7cb/quartz-core/src/main/java/org/quartz/CronExpression.java#L473
   // For Lobaro CRONs, LW is allowed in lists
   if (
-    ( options.useLastDayOfMonth &&
-      cronData.daysOfMonth.indexOf('L') !== -1 ) &&
-    ( cronData.daysOfMonth.match(/\//) ||
-      ( !options.useNearestWeekday &&
+    options.useLastDayOfMonth &&
+    cronData.daysOfMonth.indexOf('L') !== -1 &&
+    (cronData.daysOfMonth.match(/\//) ||
+      (!options.useNearestWeekday &&
         !options.lobaroUseListOfNearestWeekdays &&
         cronData.daysOfMonth.indexOf('LW') === -1 &&
-        cronData.daysOfMonth.match(/,/)
-      )
-    )
+        cronData.daysOfMonth.match(/,/)))
   ) {
     return err([
       `Cannot specify last day of month with ranges (/), lists (,) only with last weekday.`,

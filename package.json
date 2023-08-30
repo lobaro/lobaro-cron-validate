@@ -1,7 +1,7 @@
 {
   "name": "lobaro-cron-validate",
-  "version": "1.0.0",
-  "description": "lobaro modifyed cron-validate is a cron-expression validator written in TypeScript.",
+  "version": "1.1.0",
+  "description": "lobaro modified cron-validate is a cron-expression validator written in TypeScript.",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",

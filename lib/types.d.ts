@@ -24,6 +24,7 @@ declare type ExtendFields = {
 declare type ExtendWildcards = {
     useBlankDay: boolean;
     allowOnlyOneBlankDayField: boolean;
+    allowStepping?: boolean;
     useAliases?: boolean;
     mustHaveBlankDayField?: boolean;
     useLastDayOfMonth?: boolean;

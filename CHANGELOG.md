@@ -1,3 +1,20 @@
+# lobaro-cron-validate
+
+## unreleased
+
+## 1.1.0 (2023-08-30)
+### Added
+- Lobaro 'H' option: Check for proper usage of [hashed values](https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/triggers/TimerTrigger/help-spec.jelly)
+### Changed
+- Allow 'LW' to be used in day of month lists as well
+
+## 1.0.0 (2022-11-17)
+### Added
+- Lobaro 'W' list option for day of month: Allow specifying multiple nearest weekdays
+- Lobaro Device preset
+
+# cron-validate
+
 # [1.5.0](https://github.com/Airfooox/cron-validate/compare/v1.4.5...v1.5.0) (2025-03-13)
 
 

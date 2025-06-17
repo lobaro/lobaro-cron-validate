@@ -176,6 +176,37 @@ describe('test', () => {
       unuseds: [
         {
           value: '1-15,20-25',
+          description: 'W as List and L with L',
+        },
+      ],
+    },
+    {
+      describe: 'useNearestWeekdayWithList',
+      options: {
+        override: {
+          useLastDayOfMonth: true,
+          useNearestWeekday: true,
+          lobaroUseListOfNearestWeekdays: true,
+          daysOfMonth: { lowerLimit: 1, upperLimit: 31 },
+        },
+      },
+      validIndexes: [2],
+      valids: [
+          { value: '15W', description: 'nearest weekday to the 15th' },
+          { value: '1,3W', description: 'first day of month and nearest weekday to the 3th' },
+          { value: '3W,10', description: 'nearest weekday to the 3th and exactly 10th' },
+          { value: '1W,4W', description: ' nearest weekday to the 1th and nearest weekday to the 4th' },
+          { value: 'LW', description: ' last weekday' },
+          { value: '3W,LW', description: ' nearest weekday to the 3rd and last weekday' },
+      ],
+      invalids: [
+        { value: '15/W', description: 'cannot be in a step' },
+        { value: 'W/15', description: 'cannot be in a step' },
+        { value: '12,LW/15', description: 'cannot be in a step' },
+      ],
+      unuseds: [
+        {
+          value: '8-9,21-22',
           description: 'no impact when option is on but no W specified',
         },
       ],
@@ -295,6 +326,44 @@ describe('test', () => {
           value: '1-2,5-7',
           description: 'no impact when option is on but no alias is used',
         },
+      ],
+    },
+    {
+      describe: 'lobaroUseHashValue all fields',
+      options: {
+        override: {
+          lobaroUseHashValue: true,
+        },
+      },
+      validIndexes: [0,1,2,3,4],
+      valids: [
+        { value: 'H', description: 'can be used alone' },
+        { value: '5,H', description: 'can be used in a list' },
+        { value: 'H(1-3)', description: 'can be used with a range' },
+        { value: '5,H(1-3)', description: 'can be used in a list with a range' },
+        { value: 'H/2', description: 'can be used as an iterator offset' },
+        { value: '3,H/2', description: 'can be used as an iterator offset in a list' },
+        { value: 'H(1-3)/2', description: 'can be used as an iterator offset with range' },
+        { value: '4,H(1-3)/2', description: 'can be used as an iterator offset with range in a list' },
+      ],
+      invalids: [
+        { value: 'H-3', description: 'cannot be used in a range' },
+        { value: 'H(1-2)-3', description: 'cannot be used in a range (with a range)' },
+        { value: 'H(1-2', description: 'cannot be used in an incomplete range' },
+        { value: '4/H', description: 'cannot be used as a step value' },
+        { value: '4/H(1-3)', description: 'cannot be used as a step value' },
+        { value: 'H(1-100)', description: 'cannot be used with an invalid range' },
+        { value: 'H(5-1)', description: 'cannot be used with an invalid range 2' },
+        { value: 'H/', description: 'cannot be used with an invalid iterator' },
+        { value: 'H/3/', description: 'cannot be used with an invalid iterator 2' },
+        { value: 'H/three', description: 'cannot be used with an invalid iterator 3' },
+        { value: 'H/0', description: 'cannot be used with an invalid iterator 4' },
+        { value: 'H(1-100)/', description: 'cannot be used with an invalid iterator (but valid range)' },
+      ],
+      unuseds: [
+        { value: '1', description: "doesn't affect numbers even if option is on" },
+        { value: '1-3', description: "doesn't affect ranges even if option is on" },
+        { value: '1-3,4,5/2', description: "doesn't affect lists/steps even if option is on" },
       ],
     },
   ]

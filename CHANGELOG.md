@@ -15,6 +15,27 @@
 
 # cron-validate
 
+# [1.5.0](https://github.com/Airfooox/cron-validate/compare/v1.4.5...v1.5.0) (2025-03-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency yup to v1 ([#274](https://github.com/Airfooox/cron-validate/issues/274)) ([f4a61e5](https://github.com/Airfooox/cron-validate/commit/f4a61e597d9a1b284d90dc779b065247943e6224))
+
+
+### Features
+
+* add allowStepping option ([#290](https://github.com/Airfooox/cron-validate/issues/290)) ([f6a0c53](https://github.com/Airfooox/cron-validate/commit/f6a0c531058fbde7def3427dc55cce97db52c26d))
+* add check for non-integer numbers ([#291](https://github.com/Airfooox/cron-validate/issues/291)) ([2977282](https://github.com/Airfooox/cron-validate/commit/2977282ef989749230b3a3ebcb8d1d90953dc07a))
+* add check for second step number (max value, step range) ([#291](https://github.com/Airfooox/cron-validate/issues/291)) ([13e875b](https://github.com/Airfooox/cron-validate/commit/13e875b453a3efbec13fa97458034753405fb907))
+
+## [1.4.5](https://github.com/Airfooox/cron-validate/compare/v1.4.4...v1.4.5) (2022-11-20)
+
+
+### Bug Fixes
+
+* day of week occurence number cannot be bigger than 5 ([#263](https://github.com/Airfooox/cron-validate/issues/263)) ([62cbb9b](https://github.com/Airfooox/cron-validate/commit/62cbb9ba6ba191eaa49bb51c073de78f3f28eaac))
+
 ## [1.4.4](https://github.com/Airfooox/cron-validate/compare/v1.4.3...v1.4.4) (2022-10-12)
 
 

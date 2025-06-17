@@ -145,7 +145,7 @@ export default [
       useAliases: false,
       useBlankDay: true,
       allowOnlyOneBlankDayField: false,
-      mustHaveBlankDayField: false,
+      mustHaveBlankDayField: true,
       useLastDayOfMonth: true,
       useLastDayOfWeek: true,
       useNearestWeekday: true,

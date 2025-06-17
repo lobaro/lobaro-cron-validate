@@ -1,6 +1,6 @@
 export default [
   {
-    name: "npm-node-cron",
+    name: 'npm-node-cron',
     preset: {
       // https://github.com/kelektiv/node-cron
       presetId: 'npm-node-cron',
@@ -43,10 +43,10 @@ export default [
         minValue: 1970,
         maxValue: 2099,
       },
-    }
+    },
   },
   {
-    name: "aws-cloud-watch",
+    name: 'aws-cloud-watch',
     preset: {
       // https://docs.aws.amazon.com/de_de/AmazonCloudWatch/latest/events/ScheduledEvents.html
       presetId: 'aws-cloud-watch',
@@ -89,10 +89,10 @@ export default [
         minValue: 1970,
         maxValue: 2199,
       },
-    }
+    },
   },
   {
-    name: "npm-cron-schedule",
+    name: 'npm-cron-schedule',
     preset: {
       // https://github.com/P4sca1/cron-schedule
       presetId: 'npm-cron-schedule',
@@ -134,65 +134,65 @@ export default [
         minValue: 1970,
         maxValue: 2099,
       },
-    }
+    },
   },
   {
     name: 'lobaro-device-cron',
     preset: {
       presetId: 'lobaro-device-cron',
-    useSeconds: true,
-    useYears: false,
-    useAliases: false,
-    useBlankDay: true,
-    allowOnlyOneBlankDayField: false,
-    mustHaveBlankDayField: false,
-    useLastDayOfMonth: true,
-    useLastDayOfWeek: true,
-    useNearestWeekday: true,
-    lobaroUseListOfNearestWeekdays: true,
-    useNthWeekdayOfMonth: false,
-    seconds: {
-      minValue: 0,
-      maxValue: 59,
-      lowerLimit: 0, // optional, default to minValue
-      upperLimit: 59, // optional, default to maxValue
+      useSeconds: true,
+      useYears: false,
+      useAliases: false,
+      useBlankDay: true,
+      allowOnlyOneBlankDayField: false,
+      mustHaveBlankDayField: false,
+      useLastDayOfMonth: true,
+      useLastDayOfWeek: true,
+      useNearestWeekday: true,
+      lobaroUseListOfNearestWeekdays: true,
+      useNthWeekdayOfMonth: false,
+      seconds: {
+        minValue: 0,
+        maxValue: 59,
+        lowerLimit: 0, // optional, default to minValue
+        upperLimit: 59, // optional, default to maxValue
+      },
+      minutes: {
+        minValue: 0,
+        maxValue: 59,
+        lowerLimit: 0, // optional, default to minValue
+        upperLimit: 59, // optional, default to maxValue
+      },
+      hours: {
+        minValue: 0,
+        maxValue: 23,
+        lowerLimit: 0, // optional, default to minValue
+        upperLimit: 23, // optional, default to maxValue
+      },
+      daysOfMonth: {
+        minValue: 1,
+        maxValue: 31,
+        lowerLimit: 1, // optional, default to minValue
+        upperLimit: 31, // optional, default to maxValue
+      },
+      months: {
+        minValue: 0,
+        maxValue: 11,
+        lowerLimit: 0, // optional, default to minValue
+        upperLimit: 12, // optional, default to maxValue
+      },
+      daysOfWeek: {
+        minValue: 1,
+        maxValue: 7,
+        lowerLimit: 1, // optional, default to minValue
+        upperLimit: 7, // optional, default to maxValue
+      },
+      years: {
+        minValue: 1970,
+        maxValue: 2099,
+        lowerLimit: 1970, // optional, default to minValue
+        upperLimit: 2099, // optional, default to maxValue
+      },
     },
-    minutes: {
-      minValue: 0,
-      maxValue: 59,
-      lowerLimit: 0, // optional, default to minValue
-      upperLimit: 59, // optional, default to maxValue
-    },
-    hours: {
-      minValue: 0,
-      maxValue: 23,
-      lowerLimit: 0, // optional, default to minValue
-      upperLimit: 23, // optional, default to maxValue
-    },
-    daysOfMonth: {
-      minValue: 1,
-      maxValue: 31,
-      lowerLimit: 1, // optional, default to minValue
-      upperLimit: 31, // optional, default to maxValue
-    },
-    months: {
-      minValue: 0,
-      maxValue: 11,
-      lowerLimit: 0, // optional, default to minValue
-      upperLimit: 12, // optional, default to maxValue
-    },
-    daysOfWeek: {
-      minValue: 1,
-      maxValue: 7,
-      lowerLimit: 1, // optional, default to minValue
-      upperLimit: 7, // optional, default to maxValue
-    },
-    years: {
-      minValue: 1970,
-      maxValue: 2099,
-      lowerLimit: 1970, // optional, default to minValue
-      upperLimit: 2099, // optional, default to maxValue
-    },
-      }
-  }
-];
+  },
+]

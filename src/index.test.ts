@@ -866,4 +866,84 @@ describe('Test cron validation', () => {
 
     expect(cron('5-7,8-9,10-20,21-23 * * * *', { override: { allowStepping: false } }).isValid()).toBeFalsy()
   })
+
+  it("Test lobaro mustHaveBlankDayField option", () => {
+    expect(cron('* * * * *', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * 9 * *', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * 9 * ?', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * ? * 1', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * * * 1', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * 9 * 1', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeFalsy()
+
+    // without option
+    expect(cron('* * * * *').isValid()).toBeTruthy()
+
+    expect(cron('* * 9 * *').isValid()).toBeTruthy()
+    expect(cron('* * 9 * *', {
+      override: {
+        mustHaveBlankDayField: true
+      }
+    }).isValid()).toBeFalsy()
+
+    expect(cron('* * 9 * ?', {
+      override: {
+        useBlankDay: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * ? * 1', {
+      override: {
+        useBlankDay: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * * * 1').isValid()).toBeTruthy()
+    expect(cron('* * * * 1', {
+      override: {
+        mustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeFalsy()
+
+    expect(cron('* * 9 * 1', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeFalsy()
+  })
 })

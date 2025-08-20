@@ -37,8 +37,10 @@ const checkDaysOfMonth = (
   // lobaro-specific: allow '*' in daysOfMonth or daysOfWeek for mustHaveBlankDayField
   if (
     options.lobaroMustHaveBlankDayField &&
-    ((cronData.daysOfMonth !== '?' && cronData.daysOfMonth !== '*') &&
-    (cronData.daysOfWeek !== '?' && cronData.daysOfWeek !== '*'))
+    cronData.daysOfMonth !== '?' &&
+    cronData.daysOfMonth !== '*' &&
+    cronData.daysOfWeek !== '?' &&
+    cronData.daysOfWeek !== '*'
   ) {
     return err([
       `Cannot specify both daysOfMonth and daysOfWeek field when lobaroMustHaveBlankDayField option is enabled.`,

@@ -8,6 +8,8 @@ declare const _default: ({
         useBlankDay: boolean;
         allowOnlyOneBlankDayField: boolean;
         mustHaveBlankDayField: boolean;
+        lobaroMustHaveBlankDayField: boolean;
+        lobaroUseHashValue: boolean;
         useLastDayOfMonth: boolean;
         useLastDayOfWeek: boolean;
         useNearestWeekday: boolean;
@@ -112,6 +114,8 @@ declare const _default: ({
             lowerLimit?: undefined;
             upperLimit?: undefined;
         };
+        lobaroMustHaveBlankDayField?: undefined;
+        lobaroUseHashValue?: undefined;
         lobaroUseListOfNearestWeekdays?: undefined;
     };
 } | {
@@ -128,6 +132,8 @@ declare const _default: ({
         useLastDayOfWeek: boolean;
         useNearestWeekday: boolean;
         lobaroUseListOfNearestWeekdays: boolean;
+        lobaroUseHashValue: boolean;
+        lobaroMustHaveBlankDayField: boolean;
         useNthWeekdayOfMonth: boolean;
         seconds: {
             minValue: number;

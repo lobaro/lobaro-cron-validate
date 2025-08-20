@@ -10,6 +10,8 @@ export default [
       useBlankDay: false,
       allowOnlyOneBlankDayField: false,
       mustHaveBlankDayField: false,
+      lobaroMustHaveBlankDayField: false,
+      lobaroUseHashValue: false,
       useLastDayOfMonth: false,
       useLastDayOfWeek: false,
       useNearestWeekday: false,
@@ -59,7 +61,6 @@ export default [
       useLastDayOfMonth: true,
       useLastDayOfWeek: true,
       useNearestWeekday: true,
-      lobaroUseListOfNearestWeekdays: false,
       useNthWeekdayOfMonth: true,
       seconds: {
         minValue: 0,
@@ -150,6 +151,8 @@ export default [
       useLastDayOfWeek: true,
       useNearestWeekday: true,
       lobaroUseListOfNearestWeekdays: true,
+      lobaroUseHashValue: true,
+      lobaroMustHaveBlankDayField: false,
       useNthWeekdayOfMonth: false,
       seconds: {
         minValue: 0,

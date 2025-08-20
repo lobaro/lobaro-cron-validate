@@ -1,7 +1,7 @@
 {
-  "name": "cron-validate",
-  "version": "1.5.2",
-  "description": "cron-validate is a cron-expression validator written in TypeScript.",
+  "name": "lobaro-cron-validate",
+  "version": "1.1.0",
+  "description": "lobaro modified cron-validate is a cron-expression validator written in TypeScript.",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc -p ./tsconfig.build.json",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Airfooox/cron-validate.git"
+    "url": "https://github.com/lobaro/lobaro-cron-validate.git"
   },
   "author": "Konstantin L. 'Airfox' Zisiadis",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Airfooox/cron-validate/issues"
+    "url": "https://github.com/lobaro/lobaro-cron-validate/issues"
   },
-  "homepage": "https://github.com/Airfooox/cron-validate#readme",
+  "homepage": "https://github.com/lobaro/lobaro-cron-validate.git",
   "keywords": [
     "cron-validator",
     "cron-validation",
@@ -35,7 +35,6 @@
     "typescript"
   ],
   "main": "lib/index.js",
-  "type": "module",
   "types": "lib/index.d.ts",
   "files": [
     "lib"

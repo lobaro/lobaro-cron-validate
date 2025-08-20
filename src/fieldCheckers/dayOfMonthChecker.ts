@@ -34,21 +34,40 @@ const checkDaysOfMonth = (
     ])
   }
 
+  // lobaro-specific: allow '*' in daysOfMonth or daysOfWeek for mustHaveBlankDayField
+  if (
+    options.lobaroMustHaveBlankDayField &&
+    cronData.daysOfMonth !== '?' &&
+    cronData.daysOfMonth !== '*' &&
+    cronData.daysOfWeek !== '?' &&
+    cronData.daysOfWeek !== '*'
+  ) {
+    return err([
+      `Cannot specify both daysOfMonth and daysOfWeek field when lobaroMustHaveBlankDayField option is enabled.`,
+    ])
+  }
+
   // Based on this implementation logic:
   // https://github.com/quartz-scheduler/quartz/blob/1e0ed76c5c141597eccd76e44583557729b5a7cb/quartz-core/src/main/java/org/quartz/CronExpression.java#L473
+  // For Lobaro CRONs, LW is allowed in lists
   if (
     options.useLastDayOfMonth &&
     cronData.daysOfMonth.indexOf('L') !== -1 &&
-    cronData.daysOfMonth.match(/[,/]/)
+    (cronData.daysOfMonth.match(/\//) ||
+      (!options.useNearestWeekday &&
+        !options.lobaroUseListOfNearestWeekdays &&
+        cronData.daysOfMonth.indexOf('LW') === -1 &&
+        cronData.daysOfMonth.match(/,/)))
   ) {
     return err([
-      `Cannot specify last day of month with lists, or ranges (symbols ,/).`,
+      `Cannot specify last day of month with ranges (/), lists (,) only with last weekday.`,
     ])
   }
 
   if (
     options.useNearestWeekday &&
     cronData.daysOfMonth.indexOf('W') !== -1 &&
+    !options.lobaroUseListOfNearestWeekdays &&
     cronData.daysOfMonth.match(/[,/-]/)
   ) {
     return err([

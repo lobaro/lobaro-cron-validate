@@ -33,6 +33,19 @@ const checkDaysOfWeek = (
     ])
   }
 
+  // lobaro-specific: allow '*' in daysOfMonth or daysOfWeek for mustHaveBlankDayField
+  if (
+    options.lobaroMustHaveBlankDayField &&
+    cronData.daysOfMonth !== '?' &&
+    cronData.daysOfMonth !== '*' &&
+    cronData.daysOfWeek !== '?' &&
+    cronData.daysOfWeek !== '*'
+  ) {
+    return err([
+      `Cannot specify both daysOfMonth and daysOfWeek field when lobaroMustHaveBlankDayField option is enabled.`,
+    ])
+  }
+
   // Based on this implementation logic:
   // https://github.com/quartz-scheduler/quartz/blob/1e0ed76c5c141597eccd76e44583557729b5a7cb/quartz-core/src/main/java/org/quartz/CronExpression.java#L477
   if (

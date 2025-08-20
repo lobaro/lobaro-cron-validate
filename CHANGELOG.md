@@ -1,3 +1,35 @@
+# lobaro-cron-validate
+
+## unreleased
+## 1.2.1 (2025-08-20)
+### Changed
+- Use `commonjs` instead of `module` in package.json to fix import issues
+
+## [1.2.0] (2025-08-20) [YANKED]
+### Added
+- Lobaro-specific `mustHaveBlankDayField` option: Accepts `*` as a blank value as well
+### Changed
+- Use lobaro-specific `mustHaveBlankDayField` option in Lobaro Device preset by default
+- Drop regular `mustHaveBlankDayField` option from Lobaro Device preset
+- Drop field limits from Lobaro Device preset, caused issues with wildcards
+- ### Fixed
+- Missing lobaro `mustHaveBlankDayField` option in Yup validation schema
+- Use aliases in Lobaro Device preset
+- Missing lobaro option load in `presetToOptions` caused presets to never have lobaro options
+
+## 1.1.0 (2023-08-30)
+### Added
+- Lobaro 'H' option: Check for proper usage of [hashed values](https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/triggers/TimerTrigger/help-spec.jelly)
+### Changed
+- Allow 'LW' to be used in day of month lists as well
+
+## 1.0.0 (2022-11-17)
+### Added
+- Lobaro 'W' list option for day of month: Allow specifying multiple nearest weekdays
+- Lobaro Device preset
+
+# cron-validate
+
 # [1.5.0](https://github.com/Airfooox/cron-validate/compare/v1.4.5...v1.5.0) (2025-03-13)
 
 

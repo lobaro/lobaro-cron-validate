@@ -1,6 +1,6 @@
 export default [
   {
-    name: "npm-node-cron",
+    name: 'npm-node-cron',
     preset: {
       // https://github.com/kelektiv/node-cron
       presetId: 'npm-node-cron',
@@ -10,9 +10,12 @@ export default [
       useBlankDay: false,
       allowOnlyOneBlankDayField: false,
       mustHaveBlankDayField: false,
+      lobaroMustHaveBlankDayField: false,
+      lobaroUseHashValue: false,
       useLastDayOfMonth: false,
       useLastDayOfWeek: false,
       useNearestWeekday: false,
+      lobaroUseListOfNearestWeekdays: false,
       useNthWeekdayOfMonth: false,
       seconds: {
         minValue: 0,
@@ -42,10 +45,10 @@ export default [
         minValue: 1970,
         maxValue: 2099,
       },
-    }
+    },
   },
   {
-    name: "aws-cloud-watch",
+    name: 'aws-cloud-watch',
     preset: {
       // https://docs.aws.amazon.com/de_de/AmazonCloudWatch/latest/events/ScheduledEvents.html
       presetId: 'aws-cloud-watch',
@@ -87,10 +90,10 @@ export default [
         minValue: 1970,
         maxValue: 2199,
       },
-    }
+    },
   },
   {
-    name: "npm-cron-schedule",
+    name: 'npm-cron-schedule',
     preset: {
       // https://github.com/P4sca1/cron-schedule
       presetId: 'npm-cron-schedule',
@@ -132,6 +135,53 @@ export default [
         minValue: 1970,
         maxValue: 2099,
       },
-    }
-  }
-];
+    },
+  },
+  {
+    name: 'lobaro-device-cron',
+    preset: {
+      presetId: 'lobaro-device-cron',
+      useSeconds: true,
+      useYears: false,
+      useAliases: true,
+      useBlankDay: true,
+      allowOnlyOneBlankDayField: false,
+      mustHaveBlankDayField: false,
+      useLastDayOfMonth: true,
+      useLastDayOfWeek: true,
+      useNearestWeekday: true,
+      lobaroUseListOfNearestWeekdays: true,
+      lobaroUseHashValue: true,
+      lobaroMustHaveBlankDayField: true,
+      useNthWeekdayOfMonth: false,
+      seconds: {
+        minValue: 0,
+        maxValue: 59,
+      },
+      minutes: {
+        minValue: 0,
+        maxValue: 59,
+      },
+      hours: {
+        minValue: 0,
+        maxValue: 23,
+      },
+      daysOfMonth: {
+        minValue: 1,
+        maxValue: 31,
+      },
+      months: {
+        minValue: 0,
+        maxValue: 12, // will be converted from 1-12 to 0-11 internally, 0 is also accepted...
+      },
+      daysOfWeek: {
+        minValue: 1,
+        maxValue: 7,
+      },
+      years: {
+        minValue: 1970,
+        maxValue: 2099,
+      },
+    },
+  },
+]

@@ -601,6 +601,58 @@ describe('Test cron validation', () => {
         preset: 'aws-cloud-watch',
       }).isValid(),
     ).toBeFalsy()
+
+    // Test lobaro preset
+    const lobPreset = getOptionPreset("lobaro-device-cron")
+    expect(lobPreset).toBeTruthy()
+    expect(
+      cron('* * * * * *', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeTruthy()
+    expect(
+      cron('* * * * *', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeFalsy()
+
+    expect(
+      cron('H H H(0-12) ? H H', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeTruthy()
+    expect(
+      cron('H H H(25-29) ? H H', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeFalsy()
+
+    expect(
+      cron('* * * 14W,LW * *', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeTruthy()
+    expect(
+      cron('* * * 65W,LW * *', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeFalsy()
+
+    expect(
+      cron('* * * 9 * *', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeTruthy()
+    expect(
+      cron('* * * * * 1', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeTruthy()
+    expect(
+      cron('* * * 9 * 3', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeFalsy()
   })
 
   it('Test invalid ranges', () => {
@@ -649,6 +701,16 @@ describe('Test cron validation', () => {
 
     expect(cron('*/ * * * * ').isValid()).toBeFalsy()
   })
+
+  it('Test lobaro list of nearest weekdays', () => {
+    const fiveCharStringCron = cron('0 1 1W,4W * *', {
+      override: {
+        useNearestWeekday: true,
+        lobaroUseListOfNearestWeekdays: true },
+    })
+    expect(fiveCharStringCron.isValid()).toBeTruthy()
+  })
+
 
   it('Test massive cron-expression', () => {
     expect(
@@ -855,5 +917,85 @@ describe('Test cron validation', () => {
     ).toBeFalsy()
 
     expect(cron('5-7,8-9,10-20,21-23 * * * *', { override: { allowStepping: false } }).isValid()).toBeFalsy()
+  })
+
+  it("Test lobaro mustHaveBlankDayField option", () => {
+    expect(cron('* * * * *', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * 9 * *', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * 9 * ?', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * ? * 1', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * * * 1', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * 9 * 1', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeFalsy()
+
+    // without option
+    expect(cron('* * * * *').isValid()).toBeTruthy()
+
+    expect(cron('* * 9 * *').isValid()).toBeTruthy()
+    expect(cron('* * 9 * *', {
+      override: {
+        mustHaveBlankDayField: true
+      }
+    }).isValid()).toBeFalsy()
+
+    expect(cron('* * 9 * ?', {
+      override: {
+        useBlankDay: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * ? * 1', {
+      override: {
+        useBlankDay: true,
+      },
+    }).isValid()).toBeTruthy()
+
+    expect(cron('* * * * 1').isValid()).toBeTruthy()
+    expect(cron('* * * * 1', {
+      override: {
+        mustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeFalsy()
+
+    expect(cron('* * 9 * 1', {
+      override: {
+        useBlankDay: true,
+        lobaroMustHaveBlankDayField: true,
+      },
+    }).isValid()).toBeFalsy()
   })
 })

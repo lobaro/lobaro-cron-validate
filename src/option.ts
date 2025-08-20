@@ -185,8 +185,9 @@ function presetToOptionsSchema(preset: OptionPreset) {
     useLastDayOfWeek: yup.boolean(),
     useNearestWeekday: yup.boolean(),
     lobaroUseListOfNearestWeekdays: yup.boolean(),
-        lobaroUseHashValue: yup.boolean(),
-        useNthWeekdayOfMonth: yup.boolean(),
+    lobaroUseHashValue: yup.boolean(),
+    lobaroMustHaveBlankDayField: yup.boolean(),
+    useNthWeekdayOfMonth: yup.boolean(),
         seconds: yup
           .object({
             lowerLimit: yup

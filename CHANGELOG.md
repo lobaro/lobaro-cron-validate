@@ -2,6 +2,18 @@
 
 ## unreleased
 
+## 1.2.0 (2025-08-20)
+### Added
+- Lobaro-specific `mustHaveBlankDayField` option: Accepts `*` as a blank value as well
+### Changed
+- Use lobaro-specific `mustHaveBlankDayField` option in Lobaro Device preset by default
+- Drop regular `mustHaveBlankDayField` option from Lobaro Device preset
+- Drop field limits from Lobaro Device preset, caused issues with wildcards
+- ### Fixed
+- Missing lobaro `mustHaveBlankDayField` option in Yup validation schema
+- Use aliases in Lobaro Device preset
+- Missing lobaro option load in `presetToOptions` caused presets to never have lobaro options
+
 ## 1.1.0 (2023-08-30)
 ### Added
 - Lobaro 'H' option: Check for proper usage of [hashed values](https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/triggers/TimerTrigger/help-spec.jelly)

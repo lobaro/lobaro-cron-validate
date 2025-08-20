@@ -23,6 +23,7 @@ const optionPresets: { [presetId: string]: OptionPreset } = {
     useNearestWeekday: false,
     lobaroUseListOfNearestWeekdays: false,
     lobaroUseHashValue: false,
+    lobaroMustHaveBlankDayField: false,
     useNthWeekdayOfMonth: false,
     //
     seconds: {
@@ -71,6 +72,7 @@ const optionPresetSchema = yup
     useNearestWeekday: yup.boolean(),
     lobaroUseListOfNearestWeekdays: yup.boolean(),
     lobaroUseHashValue: yup.boolean(),
+    lobaroMustHaveBlankDayField: yup.boolean(),
     useNthWeekdayOfMonth: yup.boolean(),
     seconds: yup
       .object({
@@ -291,6 +293,9 @@ function presetToOptions(preset: OptionPreset, override?: InputOptions["override
       useLastDayOfMonth: preset.useLastDayOfMonth ?? false,
       useLastDayOfWeek: preset.useLastDayOfWeek ?? false,
       useNearestWeekday: preset.useNearestWeekday ?? false,
+      lobaroUseListOfNearestWeekdays: preset.lobaroUseListOfNearestWeekdays ?? false,
+      lobaroUseHashValue: preset.lobaroUseHashValue ?? false,
+      lobaroMustHaveBlankDayField: preset.lobaroMustHaveBlankDayField ?? false,
       useNthWeekdayOfMonth: preset.useNthWeekdayOfMonth ?? false,
       seconds: {
         lowerLimit: preset.seconds.lowerLimit ?? preset.seconds.minValue,

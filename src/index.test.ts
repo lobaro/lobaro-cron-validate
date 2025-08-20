@@ -601,6 +601,58 @@ describe('Test cron validation', () => {
         preset: 'aws-cloud-watch',
       }).isValid(),
     ).toBeFalsy()
+
+    // Test lobaro preset
+    const lobPreset = getOptionPreset("lobaro-device-cron")
+    expect(lobPreset).toBeTruthy()
+    expect(
+      cron('* * * * * *', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeTruthy()
+    expect(
+      cron('* * * * *', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeFalsy()
+
+    expect(
+      cron('H H H(0-12) ? H H', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeTruthy()
+    expect(
+      cron('H H H(25-29) ? H H', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeFalsy()
+
+    expect(
+      cron('* * * 14W,LW * *', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeTruthy()
+    expect(
+      cron('* * * 65W,LW * *', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeFalsy()
+
+    expect(
+      cron('* * * 9 * *', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeTruthy()
+    expect(
+      cron('* * * * * 1', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeTruthy()
+    expect(
+      cron('* * * 9 * 3', {
+        preset: 'lobaro-device-cron',
+      }).isValid(),
+    ).toBeFalsy()
   })
 
   it('Test invalid ranges', () => {

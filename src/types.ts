@@ -42,6 +42,7 @@ type ExtendWildcards = {
   lobaroUseListOfNearestWeekdays?: boolean
   lobaroUseHashValue?: boolean
   useNthWeekdayOfMonth?: boolean
+  lobaroMustHaveBlankDayField?: boolean
 }
 
 export type OptionPreset = {

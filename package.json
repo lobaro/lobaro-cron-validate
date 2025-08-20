@@ -35,7 +35,6 @@
     "typescript"
   ],
   "main": "lib/index.js",
-  "type": "module",
   "types": "lib/index.d.ts",
   "files": [
     "lib"

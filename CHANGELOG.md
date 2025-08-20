@@ -1,8 +1,11 @@
 # lobaro-cron-validate
 
 ## unreleased
+## 1.2.1 (2025-08-20)
+### Changed
+- Use `commonjs` instead of `module` in package.json to fix import issues
 
-## 1.2.0 (2025-08-20)
+## [1.2.0] (2025-08-20) [YANKED]
 ### Added
 - Lobaro-specific `mustHaveBlankDayField` option: Accepts `*` as a blank value as well
 ### Changed
